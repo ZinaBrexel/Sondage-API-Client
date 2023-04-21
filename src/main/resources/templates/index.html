@@ -14,8 +14,12 @@
 <!-----------End Header Section---------------->
 
 <!-------------Start List Section-------------->
-<h1>Liste des sondages disponibles</h1>
-
+<div class="homeTitle">
+    <h1>Liste des sondages disponibles</h1>
+</div>
+<div class="Add">
+    <a id="add-btn" th:href="@{/sondages/formulaire/new}"  class="btn" >Créer un sondage</a>
+</div>
 <div class="container" id="liste">
 
     <table class="table" aria-describedby="titreAccueil">
@@ -33,8 +37,8 @@
         <tr th:each="sondage : ${sondages}">
             <td th:text="${sondage.description}"></td>
             <td th:text="${sondage.question}"></td>
-            <td th:text="${sondage.date_creation}"></td>
-            <td th:text="${sondage.date_cloture}"></td>
+            <td th:text="${sondage.formattedDateCreation}"></td>
+            <td th:text="${sondage.formattedDateCloture}"></td>
             <td th:text="${sondage.createur}"></td>
             <td>
                 <a th:href="@{/sondages/edition/{id}(id=${sondage.id})}" id="edit-btn" class="btn">Editer</a>
@@ -47,7 +51,6 @@
     </table>
 
 </div>
-<a id="add-btn" th:href="@{/sondages/formulaire/new}"  class="btn" >Créer un sondage</a>
 
 <!-------------End List Section-------------->
 

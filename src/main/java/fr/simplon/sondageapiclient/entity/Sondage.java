@@ -32,6 +32,7 @@ public class Sondage {
 
     private LocalDate date_creation = LocalDate.now();
 
+    private String formattedDateCreation;
 
     /**
      * Date de clôture du sondage.
@@ -39,6 +40,8 @@ public class Sondage {
 
     private LocalDate date_cloture;
 
+
+    private String formattedDateCloture;
     /**
      * Nom du créateur du sondage.
      */
@@ -111,6 +114,19 @@ public class Sondage {
         this.date_creation = date_creation;
     }
 
+
+    public void setFormattedDateCreation(String formattedDateCreation) {
+        this.formattedDateCreation = formattedDateCreation;
+    }
+    public String getFormattedDateCreation() {
+        return formattedDateCreation;
+    }
+    public void setFormattedDateCloture(String formattedDateCloture) {
+        this.formattedDateCloture = formattedDateCloture;
+    }
+    public String getFormattedDateCloture() {
+        return formattedDateCloture;
+    }
     /**
      * Retourne la date de cloture du sondage.
      * @return La date de cloture du sondage.

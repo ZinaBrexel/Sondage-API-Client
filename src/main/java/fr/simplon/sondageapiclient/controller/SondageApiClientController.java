@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.Collection;
-
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Controller
 public class SondageApiClientController {
@@ -24,15 +26,26 @@ public class SondageApiClientController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
-
+    public String index(Model model) {
         String url = "http://localhost:8080/sondages";
         ResponseEntity<Collection<Sondage>> response = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<Collection<Sondage>>() {});
         Collection<Sondage> sondages = response.getBody();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.FRENCH);
+
+        // Parcours des sondages et formatage des dates
+        for (Sondage sondage : sondages) {
+            LocalDate dateCreation = sondage.getDate_creation();
+            LocalDate dateCloture = sondage.getDate_cloture();
+            String formattedDateCreation = dateCreation.format(formatter);
+            String formattedDateCloture = dateCloture.format(formatter);
+            sondage.setFormattedDateCreation(formattedDateCreation);
+            sondage.setFormattedDateCloture(formattedDateCloture);
+        }
 
         model.addAttribute("sondages", sondages);
         return "index";
     }
+
     @GetMapping("/sondages/formulaire/new")
     public String formSondage(Model model)
     {

@@ -3,12 +3,28 @@ body{
 }
 /*--------------------header.html---------------------*/
 .customHeader {
-    background-image: linear-gradient(to bottom, #A100FF, #9000E5,#8000CC);
+    background-image: linear-gradient(to bottom, #0077be, #0e5c8f, #073c5e);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand{
+    font-size: xx-large;
+}
+.customHeader #navbarNav {
+    width: 50%;
+}
+#slogan{
+    font-size: 1.2em;
 }
 /*----------------------------------------------------*/
 
 /*--------------------index.html----------------------*/
+
+.homeTitle{
+    display:flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -22,6 +38,7 @@ body{
 }
 .table{
     text-align: center;
+    margin-top: 20px;
 }
 .table tbody tr {
     transition: box-shadow 0.2s ease-in-out;
@@ -29,6 +46,10 @@ body{
 .table tbody tr:hover {
     background-color: #DCDCDC;
     box-shadow: 0 0 10px #999999;
+}
+th {
+    height: 80px;
+
 }
 tr:nth-child(odd) {
     background-color: white;
@@ -44,6 +65,7 @@ tr:nth-child(odd) {
     position: relative;
     height: 400px; /* ou la hauteur que vous souhaitez pour votre table */
     overflow-y: scroll;
+    margin-bottom: 30px;
 }
 
 .table {
@@ -55,16 +77,19 @@ tr:nth-child(odd) {
 thead {
     position: sticky;
     top: 0;
+
 }
 
 th {
     padding: 8px;
-    text-align: left;
+
     font-weight: bold;
-    background-color: white;
+    background-image: linear-gradient(to bottom, #444, #222);
+    color: #fff;
+    text-align: center;
 }
 #edit-btn {
-    background-image: linear-gradient(to bottom, #444, #222);
+    background-image: linear-gradient(to bottom, #0077be, #0e5c8f, #073c5e);
     border: none;
     color: #fff;
     padding: 10px 20px;
@@ -75,10 +100,12 @@ th {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+    width:150px
 }
 
 #edit-btn:hover {
-    background-image: linear-gradient(to bottom, #222, #444);
+    background-image: linear-gradient(to bottom,#073c5e,#0e5c8f,#0077be);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 #add-btn, #subForm, #subEdit {
@@ -93,13 +120,22 @@ th {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
 }
 
+#subForm, #subEdit{
+    width:150px;
+}
 #add-btn:hover , #subForm:hover, #subEdit:hover{
     background-image: linear-gradient(to bottom, #2E8B57, #4CAF50);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
 
+}
+.Add{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
 /*----------------------------------------------------*/
 
 /*-----------formulaire.html & editer.html------------*/
@@ -107,14 +143,14 @@ th {
 .big_container{
     margin:30px;
     align-items: center;
-}
-.mapForm{
-    margin-top:20px;
-    height: 400px;
-    max-height: 70vh;
+
 }
 #formulaire{
     flex-direction: column;
+    margin-top: 30px;
+}
+textarea{
+    width:150px;
 }
 .form-group{
     display: flex;
@@ -135,7 +171,7 @@ th {
 .form-group button, .form-group a{
     width: 35%;
 }
-#cancelForm, #cancelEdit {
+#cancelForm, #cancelEdit{
     background-image: linear-gradient(to bottom, #e74c3c, #c0392b);
     border: none;
     color: #fff;
@@ -147,6 +183,7 @@ th {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    width:150px
 }
 
 #cancelForm:hover, #cancelEdit:hover {
@@ -160,5 +197,13 @@ th {
     background-image: linear-gradient(to bottom, #444, #222);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: 40px;
+}
+#contact{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#contact h5{
+    width: 45%;
 }
 /*----------------------------------------------------*/
