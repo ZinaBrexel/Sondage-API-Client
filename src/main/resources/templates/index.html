@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>OXO Assurance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-$END$
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+
+<!-------------Start List Section-------------->
+<h1>Liste des sondages disponibles</h1>
+
+<div class="container" id="liste">
+
+    <table class="table" aria-describedby="titreAccueil">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Question</th>
+            <th>Date de création</th>
+            <th>Date de cloture</th>
+            <th>Créateur</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sondage : ${sondages}">
+            <td th:text="${sondage.description}"></td>
+            <td th:text="${sondage.question}"></td>
+            <td th:text="${sondage.date_creation}"></td>
+            <td th:text="${sondage.date_cloture}"></td>
+            <td th:text="${sondage.createur}"></td>
+            <td>
+                <a th:href="@{/sondages/edition/{id}(id=${sondage.id})}" id="edit-btn" class="btn">Editer</a>
+                <a th:href="@{/sondages/adios/{id}(id=${sondage.id})}" id="cancelEdit" class="btn">Supprimer</a>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+<a id="add-btn" th:href="@{/sondages/formulaire/new}"  class="btn" >Créer un sondage</a>
+
+<!-------------End List Section-------------->
+
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1ae7c95103.js" crossorigin="anonymous"></script>
 </body>
 </html>

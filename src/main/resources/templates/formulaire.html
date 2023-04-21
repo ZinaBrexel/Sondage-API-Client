@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>OXO Assurance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-$END$
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+
+<!-------------Start Form Section-------------->
+<div class=" big_container row">
+    <div class="container  col-md-6" id="formulaire">
+        <h1 class="titreFestival" th:text="${titre}"></h1>
+        <form  th:object="${Sondage}" method="post" class="formulaire">
+            <div class="form-group">
+                <label >Description :</label>
+                <input name="description" type="text" required="required" th:field="*{description}">
+            </div>
+            <div class="form-group">
+                <label >Question :</label>
+                <input name="question" type="text" required="required" th:field="*{question}" >
+            </div>
+            <div class="form-group">
+                <label >Date de cloture :</label>
+                <input name="date_cloture" type="date" required="required" th:field="*{date_cloture}">
+            </div>
+            <div class="form-group">
+                <label >Créateur :</label>
+                <input name="createur" type="text" required="required" th:field="*{createur}">
+            </div>
+
+            <div class="form-group">
+                <label></label>
+                <button id="subForm"type="submit" class="btn" >Envoyer</button>
+            </div>
+            <div class="form-group">
+                <label></label>
+                <a id="cancelForm" href="/" class="btn" >Annuler</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-------------End Form Section-------------->
+
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1ae7c95103.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
