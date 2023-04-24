@@ -16,15 +16,26 @@ import java.util.Collection;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+/**
+ Cette classe est un contrôleur Spring qui gère les requêtes liées aux sondages.
+ */
 @Controller
 public class SondageApiClientController {
 
+    /**
+     Constructeur de la classe qui initialise le RestTemplate.
+     */
     private RestTemplate restTemplate;
 
     public SondageApiClientController(){
         this.restTemplate = new RestTemplate();
     }
 
+    /**
+     Méthode de la classe qui traite la requête pour afficher la page d'accueil.
+     @param model Le modèle de données à envoyer à la vue.
+     @return Le nom de la vue à afficher.
+     */
     @GetMapping("/")
     public String index(Model model) {
         String url = "http://localhost:8080/sondages";
@@ -46,6 +57,12 @@ public class SondageApiClientController {
         return "index";
     }
 
+
+    /**
+     Méthode de la classe qui traite la requête pour afficher le formulaire de création d'un nouveau sondage.
+     @param model Le modèle de données à envoyer à la vue.
+     @return Le nom de la vue à afficher.
+     */
     @GetMapping("/sondages/formulaire/new")
     public String formSondage(Model model)
     {
@@ -57,6 +74,13 @@ public class SondageApiClientController {
         return "formulaire";
     }
 
+
+    /**
+     Méthode de la classe qui traite la requête pour afficher la page d'édition d'un sondage.
+     @param model Le modèle de données à envoyer à la vue.
+     @param id L'identifiant du sondage à éditer.
+     @return Le nom de la vue à afficher.
+     */
     @GetMapping("/sondages/edition/{id}")
     public String updateSondage(Model model, @PathVariable long id){
 
@@ -69,6 +93,13 @@ public class SondageApiClientController {
 
         return "edition";
     }
+
+    /**
+     Méthode de la classe qui traite la requête pour supprimer un sondage.
+     @param model Le modèle de données à envoyer à la vue.
+     @param id L'identifiant du sondage à supprimer.
+     @return Le nom de la vue à afficher.
+     */
     @GetMapping("/sondages/adios/{id}")
     public String delEleve(Model model, @PathVariable long id)
     {
@@ -78,6 +109,11 @@ public class SondageApiClientController {
         return "redirect:/";
     }
 
+    /**
+     * Ajoute un nouveau sondage en envoyant une requête POST au serveur.
+     * @param sondage Le sondage à ajouter.
+     * @return Une chaîne de caractères représentant l'url de la vue à afficher après l'ajout du sondage.
+     */
     @PostMapping("/sondages/formulaire/new")
     public String addSondage(@ModelAttribute("sondage") Sondage sondage){
 
@@ -90,6 +126,12 @@ public class SondageApiClientController {
         return "redirect:/";
     }
 
+    /**
+     * Modifie un sondage existant en envoyant une requête PUT au serveur.
+     * @param sondage Le sondage à modifier.
+     * @param id L'identifiant du sondage à modifier.
+     * @return Une chaîne de caractères représentant la vue à afficher après la modification du sondage.
+     */
     @PostMapping("/sondages/edition/{id}")
     public String updateSondage(@ModelAttribute("sondage") Sondage sondage, @PathVariable long id){
 
